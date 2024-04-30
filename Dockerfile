@@ -54,7 +54,7 @@ RUN python -m venv /py && \
 ENV PATH="/py/bin:$PATH"
 
 # istall flake8
-# RUN pip install flake8
+RUN pip install flake8
 
 # Changer l'utilisateur à "django-user"
 USER django-user
