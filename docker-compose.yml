@@ -1,0 +1,23 @@
+version: "3.9"
+
+# Définition des services pour l'API
+services:
+  app:
+    # Configuration de la construction de l'image
+    build:
+      context: .  # Chemin du contexte de construction (répertoire courant)
+      args:     # creation d'un argument appeler dev avec pour valeur true
+        - DEV=true
+
+    # Configuration des ports
+    ports:
+      - "8000:8000"  # Mapping du port du conteneur sur le port de l'hôte
+
+    # Configuration des volumes
+    volumes:
+      - ./app:/app  # Montage du dossier local './app' dans le dossier '/app' du conteneur
+
+    # Commande à exécuter lors du démarrage du conteneur
+    # Correction de la commande avec le nom correct 'manage.py'
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
