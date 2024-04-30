@@ -1,5 +1,5 @@
 # Utiliser une image Python et la version Alpine
-FROM python:3.9-alpine3.13
+FROM python:3.9.13-alpine
 
 # Ajouter le nom de l'instructeur (étiquette maintainer)
 LABEL maintainer="projetedcp.ci"
