@@ -17,7 +17,7 @@
         # Étapes à exécuter dans la tâche
         steps:
           - name: Login to Docker Hub  # Étape de connexion à Docker Hub
-            uses: docker/login-action@v3 # Utilisation de l'action docker/login-action@v1
+            uses: docker/login-action@v1 # Utilisation de l'action docker/login-action@v1
             with: # parametre de docker hub
               username: ${{ secrets.DOCKERHUB_USER }}  # Nom d'utilisateur Docker Hub
               password: ${{ secrets.DOCKERHUB_TOKEN }} # Mot de passe d'utilisateur Docker Hub
