@@ -21,3 +21,27 @@ services:
     # Correction de la commande avec le nom correct 'manage.py'
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
+
+    # definition des variables d'environnement des acces de la bd
+    environment:
+      - DB_HOST=db
+      - DB_NAME=edcp_db
+      - DB_USER=Uroot_edcp
+      - DB_PASS=e_dcp@2023#
+
+    # demarrer premierement la bd
+    depends_on:
+      - db
+
+  # creation du service de base de donnee
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - devedcp-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=edcp_db # nom de la bd
+      - POSTGRES_USER=Uroot_edcp # name user of database
+      - POSTGRES_PASSWORD=e_dcp@2023#  # password for user of database
+
+volumes:
+  devedcp-db-data:
