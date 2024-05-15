@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 """
 Test custom Django management commands.
 """
@@ -21,6 +23,7 @@ class CommandTests(SimpleTestCase):
         """Test d'attente de la base de données si elle est disponible"""
         # Définition de la valeur de retour de la méthode 'check' simulée à True
         patched_check.return_value = True
+
 
         # Appel de la commande 'wait_for_db'
         call_command('wait_for_db')
