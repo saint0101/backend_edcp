@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'edcp_apirest',
+    'rest_framework',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +143,8 @@ Indique à Django d'utiliser le modèle User défini dans edcp_apirest comme mod
 Cela signifie que vous avez un modèle d'utilisateur personnalisé nommé User situé dans le fichier edcp_apirest.models.py
 """
 AUTH_USER_MODEL = 'edcp_apirest.User'
+
+# Documentation dfr
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
