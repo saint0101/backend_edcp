@@ -135,3 +135,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+"""
+Indique à Django d'utiliser le modèle User défini dans edcp_apirest comme modèle d'utilisateur personnalisé pour le projet.
+Cela signifie que vous avez un modèle d'utilisateur personnalisé nommé User situé dans le fichier edcp_apirest.models.py
+"""
+AUTH_USER_MODEL = 'edcp_apirest.User'
