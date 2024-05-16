@@ -37,14 +37,14 @@ class AdminSiteTests(TestCase):
             email='user@example.com',  # Crée un utilisateur avec l'adresse e-mail, le mot de passe et le nom fournis
             password='testpass123',
             nom='User',
-            prenoms = 'Test',
-            organisation = 'XYZ Corp',
-            telephone = '+1234567890',
-            fonction = 'Manager',
-            consentement = 'Yes',
-            login = 'john_doe',
-            role_id = 1,
-            avatar = 'avatar.jpg',
+            prenoms ='Test',
+            organisation='XYZ Corp',
+            telephone ='+1234567890',
+            fonction='Manager',
+            consentement='Yes',
+            login='john_doe',
+            role_id=1,
+            avatar='avatar.jpg',
         )
 
 

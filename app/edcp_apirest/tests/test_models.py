@@ -10,19 +10,16 @@ from django.contrib.auth import get_user_model
 class ModelTest(TestCase):
     """ Classe pour test pour tester les modeles de la BD """
 
-
     def setUp(self):
         """
             Nettoyer la base de données avant chaque test,
         """
         get_user_model().objects.all().delete()
 
-
     def test_create_user_with_infos_successful(self):
         """
         Test de création d'un utilisateur avec les informations réussie
         """
-
         login = 'john_doe'
         role_id = 1
         avatar = 'avatar.jpg'
