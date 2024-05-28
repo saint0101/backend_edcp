@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'edcp_apirest',
     'rest_framework',
     'drf_spectacular',
+    'user',
+    'rest_framework.authtoken',
+
 ]
 
 MIDDLEWARE = [
