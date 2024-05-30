@@ -8,6 +8,10 @@ __pycache__/
 
 # Ignorer tous les fichiers .jpp dans app/avatars/
 app/avatars/*.jpg
+app/avatars/*.jpeg
+
+*.jpeg
+*.jpg
 
 # Distribution / packaging
 .Python
