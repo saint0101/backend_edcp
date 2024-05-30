@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Ignorer tous les fichiers .jpp dans app/avatars/
+app/avatars/*.jpg
+
 # Distribution / packaging
 .Python
 build/
