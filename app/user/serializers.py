@@ -21,15 +21,30 @@ class UserSerializer(serializers.ModelSerializer):
         model = get_user_model()
         fields = ('email', 'login', 'role_id', 'avatar', 'nom', 'prenoms', 'organisation', 'telephone', 'fonction', 'consentement', 'is_active', 'is_staff', 'password')
         extra_kwargs = {'password': {'write_only': True, 'min_length': 12}}
-        # fields = ('login', 'role_id', 'avatar', 'nom', 'prenoms', 'organisation', 'telephone', 'fonction', 'consentement', 'email', 'password')
-        # Options supplémentaires pour le champ 'password'
-        # extra_kwargs = {'password': {'write_only': True, 'min_length': 5}}
 
 
     def create(self, validated_data):
         """Créer et retourner un utilisateur avec un mot de passe chiffré."""
         # Création d'un nouvel utilisateur avec les données validées
         return get_user_model().objects.create_user(**validated_data)
+
+
+    def update(self, instance, validated_data):
+        """ mettre ajour le mot de passe et retourener l'utiliateur"""
+        # extraire le mot de passe et l'image  des données s'il est present
+        password = validated_data.pop('password', None)
+
+        # Appeler la méthode update de la classe parente pour mettre à jour les autres champs de l'instance
+        user = super().update(instance, validated_data)
+        # si le mode de passe de l'utilisateur a ete fournir
+        if password:
+            # mettre a jour le mot de passe de l'utilisateur avec le MP fournir
+            user.set_password(password)
+            # Sauvegarder l'instance de l'utilisateur pour appliquer le changement de mot de passe
+            user.save()
+
+        # Retourner l'instance de l'utilisateur mise à jour
+        return user
 
 
 # Définition du sérialiseur pour le jeton d'authentification de l'utilisateur
@@ -63,4 +78,3 @@ class AuthTokenSerializer(serializers.Serializer):
 
         attrs['user'] = user
         return attrs  # Retourne les attributs validés
-

@@ -14,7 +14,6 @@ from rest_framework import status
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 
-
 # URL pour créer un utilisateur (app_name='user)
 CREATE_USER_URL = reverse('user:create')
 
@@ -51,6 +50,7 @@ class PublicUserApiTests(TestCase):
             'email': 'user1@example.com',
             'login': 'sample1230',
             'role_id': 1,
+            #'avatar': None,
             'avatar': SimpleUploadedFile(name='test_avatar.jpg', content=avatar_content, content_type='image/jpeg'),
             'nom': 'Doe',
             'prenoms': 'John',
@@ -203,13 +203,6 @@ class PublicUserApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
 
-    def test_retrieve_user_unauthorized(self):
-        """ Tester l'authorisatio require pour les utiisateurs """
-
-        # Envoie une requête HTTP GET à l'URL spécifiée par ME_URL en utilisant le client de test intégré de Django.
-        res = self.client.get(ME_URL)
-        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
-
     def test_create_token_blank_password(self):
         """Teste le retour d'erreur si un mot de passe vide est fourni."""
 
@@ -240,6 +233,14 @@ class PublicUserApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
 
+    def test_retrieve_user_unauthorized(self):
+        """ Tester l'authorisatio require pour les utiisateurs """
+
+        # Envoie une requête HTTP GET à l'URL spécifiée par ME_URL en utilisant le client de test intégré de Django.
+        res = self.client.get(ME_URL)
+        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
+
 class PrivateUserApiTests(TestCase):
     """ Tester les requêtes des utilisateurs qui nécessitent une authentification """
 
@@ -258,6 +259,7 @@ class PrivateUserApiTests(TestCase):
             consentement='Yes',
             email='test@example.com',
             password='mptestuser123'
+
         )
 
         # Initialisation du client API pour effectuer des requêtes
