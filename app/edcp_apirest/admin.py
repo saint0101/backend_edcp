@@ -7,6 +7,8 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
+from django.conf import settings
+
 # Importe les modèles ici
 from edcp_apirest import models
 
@@ -74,5 +76,32 @@ class UserAdmin(BaseUserAdmin):
         }),
     )
 
+
+class NotificationAdmin(admin.ModelAdmin):
+    """ definir la page de l'administrateur """
+
+    ordering = ['id']  # Ordonne les notifications par ID
+    list_display = ['user', 'message', 'created_at', 'is_reade']  # Affiche les utilisateurs par user et message
+    # Éditer l'utilisateur
+
+    fieldsets = (
+        (None, {
+            'fields': ('user', 'message', 'is_reade')
+        }),
+    )
+
 # Enregistrer le modèle CustomUser avec l'interface d'administration
 admin.site.register(models.User, UserAdmin)
+
+# Enregistrer le modèle CustomUser avec l'interface d'administration
+admin.site.register(models.Notification, NotificationAdmin)
+
+# Modifiez le titre de la page d'administration
+admin.site.site_title = getattr(settings, 'ADMIN_SITE_TITLE', 'Django administration')
+# Modifiez le titre affiché en haut de chaque page d'administration
+admin.site.site_header = getattr(settings, 'ADMIN_SITE_HEADER', 'Django administration')
+# Modifiez le texte affiché en haut de l'index du site d'administration
+admin.site.index_title = getattr(settings, 'ADMIN_INDEX_TITLE', 'Site administration')
+
+
+

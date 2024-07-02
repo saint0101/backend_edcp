@@ -30,5 +30,7 @@ urlpatterns = [
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='api-docs'),
     # ajouter l'utiisateur
     path('api/user/', include('user.urls')),
+    # ajouter l'url de la notification
+    path('api/notification/', include('notification.urls')),
 
 ]

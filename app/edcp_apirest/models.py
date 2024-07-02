@@ -64,8 +64,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     # USERNAME_FIELD est défini sur 'email' pour l'authentification par e-mail.
-    # REQUIRED_FIELDS spécifie les champs supplémentaires requis
     USERNAME_FIELD = 'email'
+    #REQUIRED_FIELDS spécifie les champs supplémentaires requis
     REQUIRED_FIELDS = [
             'login',
             'role_id',
@@ -79,5 +79,21 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         """ les champs a retourner """
-        # , self.nom, self.organisation, self.telephone, self.fonction
+        # self.nom, self.organisation, self.telephone, self.fonction
         return self.email
+
+
+class Notification(models.Model):
+    """ Table notification """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications') # Référence à l'utilisateur recevant la notification
+    message = models.TextField() # message de notification
+    created_at = models.DateTimeField(auto_now_add=True)  # Date et heure de création de la notification
+    is_reade = models.BooleanField(default=False)    # Indique si la notification a été lue
+
+    def __str__(self):
+        """ les champs à retourner """
+        return f'Notification for {self.user} - {self.message}'
+
+
+
+

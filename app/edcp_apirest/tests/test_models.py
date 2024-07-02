@@ -14,7 +14,8 @@ class ModelTest(TestCase):
         """
             Nettoyer la base de données avant chaque test,
         """
-        get_user_model().objects.all().delete()
+        pass
+        # get_user_model().objects.all().delete()
 
     def test_create_user_with_infos_successful(self):
         """
@@ -137,10 +138,3 @@ class ModelTest(TestCase):
 
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
-
-
-
-
-
-
-

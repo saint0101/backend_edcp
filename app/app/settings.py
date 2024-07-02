@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'user',
     'rest_framework.authtoken',
+    'notification',
 
 ]
 
@@ -151,3 +152,11 @@ AUTH_USER_MODEL = 'edcp_apirest.User'
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+
+"""
+    Modifiez les informations de la page d'administration
+"""
+# Personnalisation de l'administration
+ADMIN_SITE_TITLE = "Api Rest e-DCP"
+ADMIN_SITE_HEADER = "API REST e-DCP"
+ADMIN_INDEX_TITLE = "Bienvenue sur le portail d'administration de l'API REST e-DCP"

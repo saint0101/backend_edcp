@@ -26,7 +26,7 @@ ME_URL = reverse('user:me')
 
 def create_user(**params):
     """
-        Test de ccreation de nouvel utilisateur
+        Création de nouvel utilisateur de test
     """
 
     return get_user_model().objects.create_user(**params)
@@ -45,7 +45,7 @@ class PublicUserApiTests(TestCase):
         """ Création d'un utilisateur avec succès """
 
         # Crée un fichier avatar non vide
-        avatar_content = b'This is a test avatar content'
+        avatar_content = b'Ceci est un contenu d\'avatar de test'
         payload = {
             'email': 'user1@example.com',
             'login': 'sample1230',
