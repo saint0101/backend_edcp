@@ -12,6 +12,9 @@ from django.contrib.auth.models import (
 )
 
 
+class Role(models.Model):
+    role = models.CharField(max_length=100)
+
 class UserManager(BaseUserManager):
     """Gestionnaire pour les utilisateurs"""
 
@@ -48,7 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     """Utilisateur de la BD """
 
     login = models.CharField(max_length=100, unique=True)
-    role_id = models.IntegerField(default=1)
+    # role = models.ForeignKey('Role', on_delete=models.CASCADE)
     avatar = models.FileField(upload_to='avatars/', max_length=255, null=True, blank=True)
     nom = models.CharField(max_length=225)
     prenoms = models.CharField(max_length=255)
@@ -68,7 +71,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     #REQUIRED_FIELDS spécifie les champs supplémentaires requis
     REQUIRED_FIELDS = [
             'login',
-            'role_id',
+            # 'role',
             'nom',
             'prenoms',
             'organisation',

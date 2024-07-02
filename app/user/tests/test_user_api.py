@@ -49,8 +49,7 @@ class PublicUserApiTests(TestCase):
         payload = {
             'email': 'user1@example.com',
             'login': 'sample1230',
-            'role_id': 1,
-            #'avatar': None,
+            # 'role': 1,
             'avatar': SimpleUploadedFile(name='test_avatar.jpg', content=avatar_content, content_type='image/jpeg'),
             'nom': 'Doe',
             'prenoms': 'John',
@@ -85,7 +84,7 @@ class PublicUserApiTests(TestCase):
 
         payload = {
             'login': 'saint_doe',
-            'role_id': 1,
+            # 'role': 1,
             'avatar': SimpleUploadedFile(name='avatar.jpg', content=b'Test avatar content', content_type='image/jpeg'),
             'nom': 'Doe',
             'prenoms': 'John',
@@ -110,7 +109,7 @@ class PublicUserApiTests(TestCase):
         payload = {
             'email': 'user2@example.com',
             'login': 'sample1231',
-            'role_id': 1,
+            # 'role': 1,
             'avatar': SimpleUploadedFile(name='test_avatar.jpg', content=b'Test avatar content', content_type='image/jpeg'),
             'nom': 'Doe',
             'prenoms': 'John',
@@ -142,7 +141,7 @@ class PublicUserApiTests(TestCase):
         user_details = {
             'email': 'user2@example.com',
             'login': 'sample1231',
-            'role_id': 1,
+            # 'role': 1,
             'avatar': SimpleUploadedFile(name='test_avatar.jpg', content=b'Test avatar content', content_type='image/jpeg'),
             'nom': 'Doe',
             'prenoms': 'John',
@@ -178,7 +177,7 @@ class PublicUserApiTests(TestCase):
         user_details = {
             'email': 'user2@example.com',
             'login': 'sample1231',
-            'role_id': 1,
+            # 'role': 1,
             'avatar': SimpleUploadedFile(name='test_avatar.jpg', content=b'Test avatar content', content_type='image/jpeg'),
             'nom': 'Doe',
             'prenoms': 'John',
@@ -210,7 +209,7 @@ class PublicUserApiTests(TestCase):
         user_details = {
             'email': 'user2@example.com',
             'login': 'sample1231',
-            'role_id': 1,
+            # 'role': 1,
             'avatar': SimpleUploadedFile(name='test_avatar.jpg', content=b'Test avatar content', content_type='image/jpeg'),
             'nom': 'Doe',
             'prenoms': 'John',
@@ -249,7 +248,7 @@ class PrivateUserApiTests(TestCase):
         # Création d'un utilisateur de test
         self.user = create_user(
             login='saint_doe',
-            role_id=1,
+            # role=1,
             avatar=SimpleUploadedFile(name='avatar.jpg', content=b'Test avatar content', content_type='image/jpeg'),
             nom='Doe',
             prenoms='John',

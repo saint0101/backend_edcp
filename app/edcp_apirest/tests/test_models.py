@@ -22,7 +22,7 @@ class ModelTest(TestCase):
         Test de création d'un utilisateur avec les informations réussie
         """
         login = 'john_doe'
-        role_id = 1
+        # role = 1
         avatar = 'avatar.jpg'
         nom = 'Doe'
         prenoms = 'John'
@@ -35,7 +35,7 @@ class ModelTest(TestCase):
 
         user = get_user_model().objects.create_user(
             login=login,
-            role_id=role_id,
+            # role=role,
             avatar=avatar,
             nom=nom,
             prenoms=prenoms,
@@ -48,7 +48,7 @@ class ModelTest(TestCase):
         )
 
         self.assertEqual(user.login, login)
-        self.assertEqual(user.role_id, role_id)
+        # self.assertEqual(user.role, role)
         self.assertEqual(user.avatar, avatar)
         self.assertEqual(user.nom, nom)
         self.assertEqual(user.prenoms, prenoms)
@@ -81,7 +81,7 @@ class ModelTest(TestCase):
             user = get_user_model().objects.create_user(
                 email=email,
                 login='sample1230',
-                role_id=1,
+                # role=1,
                 avatar='avatar.jpg',
                 nom='Doe',
                 prenoms='John',
@@ -111,7 +111,7 @@ class ModelTest(TestCase):
         """
 
         login = 'john_doe'
-        role_id = 1
+        # role = 1
         avatar = 'avatar.jpg'
         nom = 'Doe'
         prenoms = 'John'
@@ -124,7 +124,7 @@ class ModelTest(TestCase):
 
         user = get_user_model().objects.create_superuser(
             login=login,
-            role_id=role_id,
+            # role=role,
             avatar=avatar,
             nom=nom,
             prenoms=prenoms,

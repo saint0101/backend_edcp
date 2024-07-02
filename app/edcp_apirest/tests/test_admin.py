@@ -21,7 +21,7 @@ class AdminSiteTests(TestCase):
 
         self.admin_user = get_user_model().objects.create_superuser(
             login = 'saint_doe',
-            role_id = 1,
+            # role_id = 1,
             avatar = 'avatar.jpg',
             nom = 'Doe',
             prenoms = 'John',
@@ -43,7 +43,7 @@ class AdminSiteTests(TestCase):
             fonction='Manager',
             consentement='Yes',
             login='john_doe',
-            role_id=1,
+            # role_id=1,
             avatar='avatar.jpg',
         )
 

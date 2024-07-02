@@ -40,7 +40,7 @@ class NotificationTests(TestCase):
         self.user = User.objects.create_user(
             email='fouriersaint@gmail.com',
             login='Saint225',
-            role_id=1,
+            # role_id=1,
             avatar=avatar_file,
             nom='Fourier',
             prenoms='onesyme',

@@ -12,6 +12,7 @@ from django.conf import settings
 # Importe les modèles ici
 from edcp_apirest import models
 
+# modeule enregistreprement d'un utilisateur
 class UserAdmin(BaseUserAdmin):
     """
     Définit les pages d'administration pour les utilisateurs.
@@ -33,7 +34,7 @@ class UserAdmin(BaseUserAdmin):
                     'fonction',
                     'consentement',
                     'login',
-                    'role_id',
+                    # 'role',
                     'avatar',
                 )
             }
@@ -67,7 +68,7 @@ class UserAdmin(BaseUserAdmin):
                 'fonction',
                 'consentement',
                 'login',
-                'role_id',
+                # 'role',
                 'avatar',
                 'is_active',
                 'is_staff',
@@ -76,14 +77,14 @@ class UserAdmin(BaseUserAdmin):
         }),
     )
 
-
+# module notificaton
 class NotificationAdmin(admin.ModelAdmin):
     """ definir la page de l'administrateur """
 
     ordering = ['id']  # Ordonne les notifications par ID
     list_display = ['user', 'message', 'created_at', 'is_reade']  # Affiche les utilisateurs par user et message
-    # Éditer l'utilisateur
 
+    # Éditer l'utilisateur
     fieldsets = (
         (None, {
             'fields': ('user', 'message', 'is_reade')
