@@ -4,11 +4,15 @@
     Ecriture de la vue des notifications
 """
 
-from rest_framework import generics, permissions, authentication
+from rest_framework import generics, permissions, authentication, viewsets
 
 from notification.serializers import NotificationSerializer
 from edcp_apirest.models import Notification
 
+
+"""
+    Vues Génériques (generics)
+"""
 
 class NotificationCreateView(generics.CreateAPIView):
     """ Vue pour créer une notification """
@@ -49,3 +53,29 @@ class NotificationUpdateView(generics.UpdateAPIView):
         """ Marque la notification comme lue """
         serializer.instance.is_read = True
         serializer.save()
+
+
+class NotificationDeleteView(generics.DestroyAPIView):
+    """ Vue pour supprimer une notification """
+    serializer_class = NotificationSerializer
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        """ Récupère les notifications de l'utilisateur authentifié """
+        return Notification.objects.filter(user=self.request.user)
+
+
+"""
+    Ensembles de Vues (Viewsets)
+"""
+
+class NotificationallViewSet(viewsets.ModelViewSet):
+    """ affiche toute les notifications """
+    serializer_class = NotificationSerializer
+    queryset = Notification.objects.all()
+    authentication_classes = [authentication.TokenAuthentication]  # Définit les classes d'authentification utilisées
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user).order_by('-id')

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'user',
     'rest_framework.authtoken',
     'notification',
+    'enregistrement',
 
 ]
 

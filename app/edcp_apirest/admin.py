@@ -82,14 +82,109 @@ class NotificationAdmin(admin.ModelAdmin):
     """ definir la page de l'administrateur """
 
     ordering = ['id']  # Ordonne les notifications par ID
-    list_display = ['user', 'message', 'created_at', 'is_reade']  # Affiche les utilisateurs par user et message
+    list_display = ['user', 'message', 'created_at', 'is_read']  # Affiche les utilisateurs par user et message
 
     # Éditer l'utilisateur
     fieldsets = (
         (None, {
-            'fields': ('user', 'message', 'is_reade')
+            'fields': ('user', 'message', 'is_read')
         }),
     )
+
+
+# module TypeClient
+class TypeClientAdmin(admin.ModelAdmin):
+    """ definir la page de l'administrateur """
+
+    ordering = ['id']  # Ordonne les notifications par ID
+    list_display = ['label', 'description', 'sensible', 'ordre']  # Affiche informatons de la table
+
+    # Éditer le type du client
+    fieldsets = (
+        (None, {
+            'fields': ('label', 'description', 'sensible', 'ordre')
+        }),
+    )
+
+
+# module Secteur
+class SecteurAdmin(admin.ModelAdmin):
+    """ definir la page de l'administrateur """
+
+    ordering = ['id']  # Ordonne les notifications par ID
+    list_display = ['label', 'sensible', 'ordre']  # Affiche informatons de la table
+
+    # Éditer le type du client
+    fieldsets = (
+        (None, {
+            'fields': ('label', 'sensible', 'ordre')
+        }),
+    )
+
+
+# module Autorisation
+class AutorisationAdmin(admin.ModelAdmin):
+    """ definir la page de l'administrateur """
+
+    ordering = ['id']  # Ordonne les notifications par ID
+    list_display = ['registration', 'numero_autorisation', 'created_at']  # Affiche informatons de la table
+
+    # Éditer le type du client
+    fieldsets = (
+        (None, {
+            'fields': ('registration', 'numero_autorisation', )
+        }),
+    )
+
+
+
+# module Pays
+class PaysAdmin(admin.ModelAdmin):
+    """ definir la page de l'administrateur """
+
+    ordering = ['id']  # Ordonne les notifications par ID
+    list_display = ['label']  # Affiche informatons de la table
+
+    # Éditer le type du client
+    fieldsets = (
+        (None, {
+            'fields': ('label', )
+        }),
+    )
+
+
+# module Registration
+class RegistrationAdmin(admin.ModelAdmin):
+    """ Page d'administration pour Registration """
+
+    ordering = ['id']  # Ordonne les enregistrements par ID
+    list_display = ['user', 'created_at', 'typeclient', 'raisonsociale', 'representant', 'rccm', 'secteur',
+                    'secteur_description', 'presentation', 'telephone', 'email_contact', 'site_web', 'pays',
+                    'ville', 'adresse_geo', 'adresse_bp', 'gmaps_link', 'effectif', ]
+
+    fieldsets = (
+        (None, {
+            'fields': ('user', 'typeclient', 'raisonsociale', 'representant', 'rccm', 'secteur',
+                       'secteur_description', 'presentation', 'telephone', 'email_contact', 'site_web', 'pays',
+                       'ville', 'adresse_geo', 'adresse_bp', 'gmaps_link', 'effectif',)
+        }),
+    )
+
+
+# Enregistrer le modèle Autorisation avec l'interface d'administration
+admin.site.register(models.Autorisation, AutorisationAdmin)
+
+# Enregistrer le modèle RegistrationAdmin avec l'interface d'administration
+admin.site.register(models.Registration, RegistrationAdmin)
+
+# Enregistrer le modèle PaysAdmin avec l'interface d'administration
+admin.site.register(models.Pays, PaysAdmin)
+
+# Enregistrer le modèle SecteurAdmin avec l'interface d'administration
+admin.site.register(models.Secteur, SecteurAdmin)
+
+# Enregistrer le modèle TypeClientAdmin avec l'interface d'administration
+admin.site.register(models.TypeClient, TypeClientAdmin)
 
 # Enregistrer le modèle CustomUser avec l'interface d'administration
 admin.site.register(models.User, UserAdmin)

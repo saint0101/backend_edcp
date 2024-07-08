@@ -20,7 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
         # Spécification du modèle et des champs à sérialiser
         model = get_user_model()
         fields = ('email', 'login', 'avatar', 'nom', 'prenoms', 'organisation', 'telephone', 'fonction', 'consentement', 'is_active', 'is_staff', 'password')
-        extra_kwargs = {'password': {'write_only': True, 'min_length': 12}}
+        extra_kwargs = {'password': {'write_only': True, 'min_length': 10}}
 
 
     def create(self, validated_data):

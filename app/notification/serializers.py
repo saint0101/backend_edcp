@@ -15,7 +15,7 @@ class NotificationSerializer(serializers.ModelSerializer):
 
         model = Notification
         # Champs à inclure dans le sérialiseur
-        fields = ['id', 'user', 'message', 'created_at', 'is_reade']
+        fields = ['id', 'user', 'message', 'created_at', 'is_read']
         # user est en lecture seule car il sera ajouté automatiquement lors de la création
         read_only_fields = ['user']
 

@@ -84,18 +84,18 @@ class NotificationTests(TestCase):
 
         # Assurez-vous qu'il y a au moins une notification dans la base de données
         if Notification.objects.count() == 0:
-            Notification.objects.create(user=self.user, message='Test notification', is_reade=False)
+            Notification.objects.create(user=self.user, message='Test notification', is_read=False)
         # Récupère la première notification
         notification = Notification.objects.first()
         # Utilisation de reverse pour générer l'URL pour les details
         URL_DETAIL_NOTIF = reverse('notification:notification-update', args=[notification.id])
         # Envoie une requête PATCH à l'URL générée avec {'is_read': True} pour mettre à jour
         # le champ is_read  de la notification
-        response = self.client.patch(URL_DETAIL_NOTIF, {'is_reade': True})
+        response = self.client.patch(URL_DETAIL_NOTIF, {'is_read': True})
         self.assertEqual(response.status_code, 200)
         notification.refresh_from_db()
         # Vérifie que le champ is_read est maintenant True
-        self.assertTrue(notification.is_reade)
+        self.assertTrue(notification.is_read)
 
 
 

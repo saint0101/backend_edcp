@@ -32,5 +32,8 @@ urlpatterns = [
     path('api/user/', include('user.urls')),
     # ajouter l'url de la notification
     path('api/notification/', include('notification.urls')),
+    # ajouter l'url de l'enregistrement
+    path('api/enregistrement/', include('enregistrement.urls')),
+
 
 ]
